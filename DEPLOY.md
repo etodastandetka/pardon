@@ -72,21 +72,67 @@ sudo systemctl enable nginx
 sudo systemctl status nginx
 ```
 
-## 6. Получение SSL сертификата (Let's Encrypt)
+## 6. Настройка DNS записей (ВАЖНО!)
+
+**Перед получением SSL сертификата необходимо настроить DNS записи!**
+
+### Шаг 1: Узнайте IP адрес вашего сервера
+
+```bash
+# На сервере выполните:
+curl ifconfig.me
+# или
+hostname -I
+```
+
+### Шаг 2: Настройте DNS записи у вашего регистратора домена
+
+Зайдите в панель управления вашего доменного регистратора (где вы купили `pardon.su`) и добавьте следующие DNS записи:
+
+**Тип A запись:**
+- **Имя/Хост:** `@` или `pardon.su` (или оставьте пустым)
+- **Значение/IP:** `ВАШ_IP_АДРЕС_СЕРВЕРА`
+- **TTL:** `3600` (или автоматически)
+
+**Тип A запись для www:**
+- **Имя/Хост:** `www`
+- **Значение/IP:** `ВАШ_IP_АДРЕС_СЕРВЕРА`
+- **TTL:** `3600`
+
+### Шаг 3: Проверьте DNS записи
+
+```bash
+# Проверьте, что записи настроены (может занять до 24 часов, обычно 5-30 минут)
+dig pardon.su +short
+dig www.pardon.su +short
+
+# Или используйте nslookup
+nslookup pardon.su
+nslookup www.pardon.su
+```
+
+**Важно:** Дождитесь, пока DNS записи распространятся (проверка выше должна вернуть IP вашего сервера), иначе Certbot не сможет получить сертификат!
+
+## 7. Получение SSL сертификата (Let's Encrypt)
+
+**Убедитесь, что DNS записи настроены и работают перед выполнением этой команды!**
 
 ```bash
 # Устанавливаем Certbot
 sudo apt install -y certbot python3-certbot-nginx
 
 # Получаем сертификат (замените yourdomain.com на ваш домен)
-sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+sudo certbot --nginx -d pardon.su -d www.pardon.su
+
+# Если DNS еще не настроен, используйте standalone режим (потребует остановить Nginx):
+# sudo certbot certonly --standalone -d pardon.su -d www.pardon.su
 
 # Сертификат будет автоматически обновляться
 # Проверяем автообновление
 sudo certbot renew --dry-run
 ```
 
-## 7. Настройка Nginx
+## 8. Настройка Nginx
 
 Создайте файл конфигурации `/etc/nginx/sites-available/pardon`:
 
@@ -157,7 +203,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-## 8. Настройка файрвола
+## 9. Настройка файрвола
 
 ```bash
 # Разрешаем HTTP и HTTPS
@@ -167,7 +213,7 @@ sudo ufw enable
 sudo ufw status
 ```
 
-## 9. Переменные окружения (если нужны)
+## 10. Переменные окружения (если нужны)
 
 Создайте файл `.env.local` в корне проекта:
 
@@ -176,7 +222,7 @@ sudo ufw status
 # NODE_ENV=production
 ```
 
-## 10. Полезные команды
+## 11. Полезные команды
 
 ```bash
 # PM2
@@ -195,7 +241,7 @@ pm2 logs pardon        # Логи приложения
 sudo tail -f /var/log/nginx/pardon_error.log  # Логи Nginx
 ```
 
-## 11. Обновление приложения
+## 12. Обновление приложения
 
 ```bash
 # Переходим в директорию проекта
