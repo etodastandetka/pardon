@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "PARDON",
+    "subtitle": "Official Return to the Network",
+    "description": "pardon was created in December 2024 by a person like hiwoshi, but then the project was closed. We are announcing its official return to the network."
+  },
+  "info": {
+    "title": "About Pardon",
+    "description": "pardon was created in December 2024 by a person like hiwoshi, but then the project was closed. We are announcing its official return to the network."
+  },
+  "links": {
+    "title": "Our Materials",
+    "channel": "pardon channel",
+    "chat": "pardon chat",
+    "bot": "pardon bot"
+  },
+  "nav": {
+    "home": "Home",
+    "owners": "Owners"
+  },
+  "owners": {
+    "title": "Project Owners",
+    "subtitle": "The team behind Pardon",
+    "godkm": {
+      "name": "godkm",
+      "role": "Founder",
+      "description": "Also known as hiwoshi. Founder of the Pardon project, has been an owner since 2024. Experienced OSINT specialist within and beyond Telegram, active community participant."
+    },
+    "kotik": {
+      "name": "KOTIK",
+      "role": "Programmer",
+      "description": "Programmer with experience in C++, Python, JavaScript and other languages. Developer and technical specialist of the project."
+    },
+    "akashi": {
+      "name": "akashi spider",
+      "role": "Co-founder",
+      "description": "Promising character of pardon, gained fame in 2025 through channels and frequent targets/gism. In January 2026, will start working on pardon at full capacity together with hiwoshi and kotik."
+    },
+    "dave": {
+      "name": "spider dave",
+      "role": "Participant",
+      "description": "Active participant of pardon who actively helps in its work and development. Student of hiwoshi."
+    },
+    "durka": {
+      "name": "durka",
+      "role": "Co-founder",
+      "description": "Active project participant contributing to the development and support of the Pardon community."
+    }
+  },
+  "footer": {
+    "text": "© 2025 Pardon. Official return to the network."
+  }
+}
+
