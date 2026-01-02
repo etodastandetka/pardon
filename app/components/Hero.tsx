@@ -40,21 +40,26 @@ export default function Hero() {
     if (videoRef.current && useVideo) {
       const playVideo = async () => {
         try {
-          await videoRef.current?.play()
-          setVideoLoaded(true)
+          if (videoRef.current) {
+            videoRef.current.load()
+            await videoRef.current.play()
+            setVideoLoaded(true)
+          }
         } catch (error) {
           console.error('Video autoplay failed:', error)
-          // Try to play with user interaction
+          // Try next video if current one fails
           if (currentVideoIndex < videoFiles.length - 1) {
-            setCurrentVideoIndex(currentVideoIndex + 1)
+            setCurrentVideoIndex(prev => prev + 1)
           } else {
             setUseVideo(false)
           }
         }
       }
-      playVideo()
+      // Small delay to ensure video element is ready
+      const timer = setTimeout(playVideo, 100)
+      return () => clearTimeout(timer)
     }
-  }, [useVideo, currentVideoIndex, videoFiles.length])
+  }, [useVideo, currentVideoIndex])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -102,8 +107,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-dark" />
       )}
 
-      {/* Dark overlay for text readability - более прозрачный чтобы видео было видно */}
-      <div className="absolute inset-0 bg-gradient-to-b from-pardon-dark/50 via-pardon-dark/60 to-pardon-dark/70 z-0" />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-pardon-dark/40 via-pardon-dark/50 to-pardon-dark/65 z-0" />
 
       {/* Animated background particles/glow effect - поверх overlay */}
       <div className="absolute inset-0 overflow-hidden z-[1]">

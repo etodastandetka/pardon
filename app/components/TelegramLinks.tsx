@@ -5,7 +5,7 @@ import { useLanguage } from '@/app/contexts/LanguageContext'
 import { ChannelIcon, ChatIcon, BotIcon } from './icons'
 
 const telegramLinks = {
-  channel: 'https://t.me/+e0kIzZ7AUQY3ZDBi',
+  channel: 'https://t.me/+2rrkEdXh7cg1MTIy',
   chat: 'https://t.me/+3fVc2XuHHdwzZTAy',
   bot: 'https://t.me/pardondox_bot',
 }
@@ -88,7 +88,7 @@ export default function TelegramLinks() {
                 boxShadow: '0 10px 40px rgba(220, 20, 60, 0.4)'
               }}
               whileTap={{ scale: 0.95 }}
-              className="group relative bg-gradient-to-br from-pardon-dark-lighter via-pardon-dark-light to-pardon-dark-lighter border-2 border-pardon-red/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 hover:border-pardon-red transition-all duration-500 overflow-hidden shadow-xl hover:shadow-2xl"
+              className="group relative bg-gradient-to-br from-pardon-dark-lighter via-pardon-dark-light to-pardon-dark-lighter border-2 border-pardon-red/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 hover:border-pardon-red transition-all duration-500 overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-pardon-red/20"
             >
               {/* Animated background */}
               <div className="absolute inset-0 bg-gradient-to-br from-pardon-red/10 via-pardon-red/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -130,8 +130,8 @@ export default function TelegramLinks() {
                 >
                   {t(`links.${link.key}`)}
                 </h3>
-                <div className="text-xs sm:text-sm text-gray-400 group-hover:text-pardon-rose-gold transition-colors font-medium">
-                  {link.url.replace('https://', '')}
+                <div className="text-xs sm:text-sm text-gray-400 group-hover:text-pardon-rose-gold transition-colors font-medium truncate">
+                  {link.url.replace('https://', '').replace('t.me/', '')}
                 </div>
               </div>
               

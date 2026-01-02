@@ -16,8 +16,34 @@ export default function Home() {
       <Hero />
 
       {/* Info Section */}
-      <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 px-4">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pardon-dark to-pardon-dark" />
+      <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 overflow-hidden">
+        {/* Animated background effects */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-pardon-red/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-pardon-rose-gold/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1.3, 1, 1.3],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+        </div>
         
         <motion.div
           className="relative z-10 max-w-4xl mx-auto text-center"
@@ -47,7 +73,7 @@ export default function Home() {
           >
             {t('info.title')}
           </motion.h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto px-2">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto px-2">
             {t('info.description')}
           </p>
         </motion.div>
