@@ -139,7 +139,9 @@ export default function OwnersPage() {
                       >
                         <div className="absolute inset-0 bg-pardon-red/20 rounded-full blur-xl" />
                         <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center bg-gradient-to-br from-pardon-dark-light to-pardon-dark-lighter rounded-xl sm:rounded-2xl border-2 border-pardon-red/50 p-2 sm:p-3 md:p-4">
-                          <IconComponent className="w-full h-full text-pardon-red" style={{ filter: 'drop-shadow(0 0 10px rgba(220, 20, 60, 0.5))' }} />
+                          <div style={{ filter: 'drop-shadow(0 0 10px rgba(220, 20, 60, 0.5))' }}>
+                            <IconComponent className="w-full h-full text-pardon-red" />
+                          </div>
                         </div>
                       </motion.div>
                       <div className="flex-1 pt-1 sm:pt-2">

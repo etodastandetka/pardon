@@ -112,7 +112,9 @@ export default function TelegramLinks() {
                   <div className="relative">
                     <div className="absolute inset-0 bg-pardon-red/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500" />
                     <div className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center bg-gradient-to-br from-pardon-dark-light to-pardon-dark-lighter rounded-lg sm:rounded-xl border-2 border-pardon-red/50 p-2 sm:p-3">
-                      <IconComponent className="w-full h-full text-pardon-red" style={{ filter: 'drop-shadow(0 0 10px rgba(220, 20, 60, 0.6))' }} />
+                      <div style={{ filter: 'drop-shadow(0 0 10px rgba(220, 20, 60, 0.6))' }}>
+                        <IconComponent className="w-full h-full text-pardon-red" />
+                      </div>
                     </div>
                   </div>
                 </motion.div>
