@@ -94,21 +94,15 @@ hostname -I
 - **Значение/IP:** `ВАШ_IP_АДРЕС_СЕРВЕРА`
 - **TTL:** `3600` (или автоматически)
 
-**Тип A запись для www:**
-- **Имя/Хост:** `www`
-- **Значение/IP:** `ВАШ_IP_АДРЕС_СЕРВЕРА`
-- **TTL:** `3600`
-
 ### Шаг 3: Проверьте DNS записи
 
 ```bash
 # Проверьте, что записи настроены (может занять до 24 часов, обычно 5-30 минут)
 dig pardon.su +short
-dig www.pardon.su +short
+# Должен вернуть ваш IP адрес
 
 # Или используйте nslookup
 nslookup pardon.su
-nslookup www.pardon.su
 ```
 
 **Важно:** Дождитесь, пока DNS записи распространятся (проверка выше должна вернуть IP вашего сервера), иначе Certbot не сможет получить сертификат!
@@ -121,11 +115,11 @@ nslookup www.pardon.su
 # Устанавливаем Certbot
 sudo apt install -y certbot python3-certbot-nginx
 
-# Получаем сертификат (замените yourdomain.com на ваш домен)
-sudo certbot --nginx -d pardon.su -d www.pardon.su
+# Получаем сертификат
+sudo certbot --nginx -d pardon.su
 
 # Если DNS еще не настроен, используйте standalone режим (потребует остановить Nginx):
-# sudo certbot certonly --standalone -d pardon.su -d www.pardon.su
+# sudo certbot certonly --standalone -d pardon.su
 
 # Сертификат будет автоматически обновляться
 # Проверяем автообновление
